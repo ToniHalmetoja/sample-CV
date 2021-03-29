@@ -1,0 +1,242 @@
+/*
+
+scss.css
+  |
+  - _desktop.css
+  
+*/
+
+@charset "UTF-8";
+
+@import "_normalize.css";
+
+/*Shared variables and includes for SASS*/
+
+$base-font-color: #ccffff;
+$box-shadow-color: 10px 10px 10px rgba(0, 0, 0, 0.4);
+$hover-highlight: rgba(31, 68, 110, 0.6);
+$black-background: rgba(0, 0, 0, 0.8);
+
+%column-shared {
+  margin: auto auto 1vh 5vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: $box-shadow-color;
+  border-radius: 10px;
+}
+
+%text-shared {
+  font-family: 'Merriweather Sans', sans-serif;
+  color: $base-font-color;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px $base-font-color;
+  }
+
+  to {
+    text-shadow: 0 0 20px $base-font-color;
+  }
+}
+
+/*Setting the background to the html tag seems to be the only way to have it truly responsive*/
+
+html {
+  background: url("../img/thunderstorm.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/*Navigation bar, items and links within it*/
+
+nav {
+  box-shadow: $box-shadow-color;
+  background-color: $black-background;
+  display: flex;
+  position: sticky;
+  /*Sticky only in mobile, this is overriden in desktop*/
+  justify-content: center;
+  left: 0;
+  right: 0;
+  top: 3vh;
+  width: 90%;
+  margin: auto;
+  border-radius: 10px;
+  z-index: 1;
+
+  ul {
+    padding: 14px;
+    justify-content: space-between;
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: bold;
+    padding: 28px 28px;
+    /*Extra padding for mobile view*/
+    color: $base-font-color;
+    border-radius: 10px;
+
+    &:link {
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: background-color 0.5s ease;
+    }
+
+    &:visited {
+      text-decoration: none;
+    }
+
+    &:hover {
+      background-color: $hover-highlight;
+    }
+
+    &.active {
+      background-color: rgba(31, 68, 110, 0.6);
+      -webkit-animation: glow 2s ease-in-out infinite alternate;
+      -moz-animation: glow 2s ease-in-out infinite alternate;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+  }
+}
+
+/*Styling for the portrait and social media icons. Icons are also wrapped in .some to space them out neatly*/
+
+figure {
+  padding: 1%;
+  color: $base-font-color;
+  object-fit: scale-down;
+}
+
+.portrait-img {
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/*"some" here means SOcial MEdia, not just "something"*/
+
+.some {
+  display: flex;
+  justify-content: space-around;
+
+  a {
+    color: $base-font-color;
+    font-size: 5em;
+    text-decoration: none;
+
+    &:hover {
+      color: $hover-highlight;
+    }
+  }
+}
+
+/*Formatting for the main "content" - paragraphs, rows, columns*/
+
+.content {
+  margin-top: 10vh;
+  position: relative;
+  justify-content: space-around;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.column1 {
+  @extend %column-shared;
+  margin-right: 5vh;
+  display: flex;
+}
+
+.column2 {
+  @extend %column-shared;
+  padding: 2em;
+  margin-right: 5vh;
+  width: 90vw;
+}
+
+h1 {
+  @extend %text-shared;
+  font-size: 1.5em;
+  margin: 1vh;
+  font-weight: bold;
+}
+
+h2 {
+  @extend %text-shared;
+  font-size: 1.2em;
+  margin: 1vh;
+  font-weight: bold;
+
+  &.column1-header {
+    text-align: center;
+  }
+
+  &.portfolio-header {
+    text-align: center;
+  }
+}
+
+p {
+  @extend %text-shared;
+  font-size: 1.2em;
+  font-weight: 300;
+}
+
+/*Portfolio grid for the relevant page*/
+
+.portfolio-top-bar {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 5vh auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: $box-shadow-color;
+  border-radius: 10px;
+}
+
+.portfolio {
+  width: 80%;
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  margin: auto;
+  grid-gap: 50px 50px;
+}
+
+.portfolio-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: $box-shadow-color;
+  border-radius: 10px;
+  padding: 2vh;
+}
+
+.portfolio-desc {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-size: 2em;
+  margin: 10px;
+  color: $base-font-color;
+  font-weight: bold;
+}
+
+.portfolio-thumb {
+  max-width: 100%;
+}
+
+/*Global link outline, set to be more visible for accessibility*/
+
+a {
+  outline-color: #99ccff;
+  outline-width: thick;
+}
+
+@import "_desktop";

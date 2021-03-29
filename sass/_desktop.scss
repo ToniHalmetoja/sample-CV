@@ -1,0 +1,75 @@
+/*Widescreen*/
+
+@media only screen and (min-width: 1600px) {
+
+  .portfolio {
+    top: 2vh;
+    margin: 2vh auto;
+  }
+
+  .content {
+    margin-top: 1vh;
+  }
+
+  .column1 {
+    margin-top: 1vh;
+  }
+
+  .column2 {
+    width: 40vw;
+    margin-top: 1vh;
+  }
+
+  nav {
+    display: flex;
+    margin: 4vh auto;
+
+    ul {
+      display: flex;
+      padding: 0%;
+    }
+
+    a {
+      padding: 14px 16px;
+    }
+  }
+}
+
+/*Not quite widescreen but bigger than mobile?*/
+
+@media only screen and (min-width: 1000px) and (max-width: 1599px) {
+
+  .portfolio {
+    margin: 2vh auto;
+  }
+
+  .content {
+    margin-top: 5vh;
+  }
+
+  .column1 {
+    margin-right: 2vh;
+  }
+
+  .column2 {
+    width: 40vw;
+  }
+
+  nav {
+    margin: 1vh auto;
+
+    ul {
+      display: flex;
+      padding: 0%;
+    }
+
+    a {
+      padding: 14px 16px;
+    }
+  }
+
+
+
+
+
+}
